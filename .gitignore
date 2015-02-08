@@ -53,5 +53,12 @@ docs/_build/
 # PyBuilder
 target/
 
+# -----------------------------------------------------------------------------
 # John's personal mess
 other/
+
+# KDE Dolphin directory display preferences
+.directory
+
+# PyCharm (IntelliJ) project files
+.idea/
