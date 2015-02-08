@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="markers-orient.css" charset="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" background="black">
+<style>
+<![CDATA[
+path { stroke:purple; fill:salmon; stroke-width:20; stroke-opacity:0.5;
+	marker-end:url(#path_marker);
+}
+.path2 { stroke:lightgreen; fill:gold; stroke-width:20; stroke-opacity:0.5;}
+circle { fill: white; }
+.bezier path { stroke:yellow; stroke-opacity: 1; stroke-width:10; fill: none;}
+.bezier_cubic path { stroke:green; stroke-opacity: 1; stroke-width:10; fill: none;}
+
+path{
+	stroke:greenyellow;
+	fill:none;
+	marker-end:url(test_path.svg#endmarker);
+}
+
+#endmarker{
+	fill:greenyellow;
+}
+
+#path1{
+	stroke-width:2px;
+}
+
+#path2{
+	stroke-width:7px;
+}
+
+
+]]>
+</style>
+<rect  width="2000" height="2000" style="fill: black;"/>  
+
+<!-- "line to" ("L") points absolute coordinates -->
+<path d="M 20,20 L 20,100 L 100,10 L 140,100 L 160,60"/>
+<path d="M 20,20 L 20,100 L 100,10 L 140,100 L 160,60 Z" transform="translate(0,200)" style="stroke-linejoin:round"/>
+
+<!-- horizontal ("H") and vertical ("V") absolute coordinates -->
+<path d="M 0,0 H 120 V 80 H 40 Z" class="path2" transform="translate(200,100)"/>
+<path d="M 0,0 H 70 V 50 H 40 Z M 80,20 H 150 V 50 H 100 Z" class="path2" transform="translate(200,300)"/>
+
+<!-- relative coordinates -->
+<path d="M 0,0 h 60 v 60 h -40 Z" class="path2" transform="translate(400,100)"/>
+<path d="M 0,0 h 60 v 60 h  40 v -20 h 40 v -80 h -60 Z" class="path2" transform="translate(400,300)" style="stroke-linejoin:round"/>
+
+<!-- arcs -->
+<!-- M startX,startY a radiusA radiusB rotation largeArcFlag sweepFlag endX,endY -->
+<!-- 
+largeArcFlag = 1 for "large arc", 0 for "small arc"
+sweepFlag = draw spin (path draw direction when rotating, ie. "positive angle" or "negative angle")
+ -->
+ <!-- small arcs -->
+<path d="M 0,0 a 100 60 30 0 0 50 50" transform="translate( 200, 400)" style="stroke:skyblue"/>
+<path d="M 0,0 a 100 60 30 0 1 50 50" transform="translate( 200, 500)" style="stroke:skyblue"/>
+<!-- large arcs -->
+<path d="M 0,0 a 100 60 30 1 0 50 50" transform="translate( 200, 650)" style="stroke:skyblue"/>
+<path d="M 0,0 a 100 60 30 1 1 50 50" transform="translate( 200, 900)" style="stroke:skyblue"/>
+
+
+<!-- circle / disk -->
+<!-- 2 successive arcs, with equal radius (the 4 of them, here 50 px) and using relative coordinates -->
+<path d="M 0,0 a 50 50 0 0 0 100,0 a 50 50 0 0 0 -100,0" transform="translate(400,500)" style="stroke:yellow;stroke-width:20px;stroke-opacity:0.5;fill:skyblue;"/>
+
+
+<!-- bezier curves (quadratic "q") -->
+<!-- control point "pulls" the line so that it goes through the middle of the segment...
+... that rely the two middles of the two segments start-control and control-end. -->
+<!-- M startX,startY q inflexX,inflexY endX,endY -->
+<g transform="translate(600,100)" class="bezier">
+	<path d="M 0,0 q 50,50 200,0"/>
+	<circle cx="50" cy="50" r="2"/>
+</g>
+<!-- M startX,startY q inflexX,inflexY  endX,endY -->
+<g transform="translate(600,300)" class="bezier">
+	<path d="M 0,0 q 50,50 70,-20 T 200,0"/>
+	<circle cx="50" cy="50" r="2"/>
+	<circle cx="70" cy="-20" r="2" style="fill: red;"/>
+	<line x1="" y1="" x2="" y2=""/>
+</g>
+
+<!-- bezier curves (cubic "c") -->
+<!-- M startX,startY c inflexX,inflexY endX,endY -->
+<g transform="translate(600,500)" class="bezier_cubic">
+	<path d="M 0,0 C 50,50 80,-80 200,0"/>
+	<circle cx="50" cy="50" r="2"/>
+	<circle cx="80" cy="-80" r="2"/>
+</g>
+<!-- M startX,startY q inflexX,inflexY  endX,endY -->
+<g transform="translate(600,500)" class="bezier_cubic">
+	<path d="M 0,0 C 50,50 80,-80 200,0 S 260,0 300,40"/>
+	<circle cx="50" cy="50" r="2"/>
+	<circle cx="80" cy="-80" r="2"/>
+	<circle cx="200" cy="0" r="2"/>
+	<circle cx="260" cy="0" r="2" style="stroke:red;"/><!-- control point  -->
+	<circle cx="300" cy="40" r="2"/>
+</g>
+
+
+<defs>
+
+<marker id="endmarker" markerWidth="6" markerHeight="4" refX="0" refY="2" orient="auto">
+	<polyline points="0,0 6,2 0,4"/>
+</marker>
+
+</defs>
+
+<path id="path1" d="M 50,50 h 100 v 150 h -100"/>
+<path id="path2" d="M 250,50 h 100 v 150 h -100"/>
+
+<defs>
+	<marker id="path_marker" markerWidth="1" markerHeight="1">
+		<!-- <rect width="10" height="10" x="4" y="-5" style="fill:gold;"/> -->
+		<circle cx="4" cy="4" r="8" style="fill:orange;"/>
+		<!-- <polyline point="0,0 6,2 0,4"/> -->
+	</marker>
+</defs>
+
+<circle cx="4" cy="4" r="8" style="fill:orange;"/>
+
+
+<path id="textcurve" d="M 0,0 q 200,200 500,-100 T 800,0" transform="translate(40,400)" style="fill:none; stroke: yellow; stroke-opacity:1; stroke-width:1;"/>
+
+<text style="stroke:white;fill:white;font-size:3em;">
+<textPath xlink:href="#textcurve">
+Yes yes yo, le beat est sur le flow et c'est comme ça qu'ça s'passe dans le place haaan ouais ouais
+</textPath>
+</text>
+
+</svg>

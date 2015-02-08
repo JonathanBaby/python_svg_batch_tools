@@ -1,0 +1,22 @@
+[
+{
+    "match":"fill:none",
+    "set":"fill:#ff0000;fill-opacity:0.5",
+    "name":"Replace black or empty with semi-transparent red."
+},
+{
+    "match":"fill:#00ffff",
+    "set":"fill:#ff00ff;stroke:#00ff00;stroke-opacity:1;stroke-width:25;",
+    "name":"Replace cyan with magenta, and add a green stroke."
+},
+{
+    "match":"stroke:none",
+    "set":"stroke:#00ffff;stroke-opacity:0.5;stroke-width:25;",
+    "name":"Add a semi-transparent cyan stroke to any element without stroke."
+},
+{
+    "match":"rule:impossible",
+    "set":"fill:#00346b",
+    "name":"SHOULD NOT HAPPEN"
+}
+]

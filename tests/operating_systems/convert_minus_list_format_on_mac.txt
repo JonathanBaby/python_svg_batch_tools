@@ -1,0 +1,235 @@
+   Format  Module    Mode  Description
+-------------------------------------------------------------------------------
+      3FR  DNG       r--   Hasselblad CFV/H3D39II
+      AAI* AAI       rw+   AAI Dune image
+       AI  PDF       rw-   Adobe Illustrator CS2
+      ART* ART       rw-   PFS: 1st Publisher Clip Art
+      ARW  DNG       r--   Sony Alpha Raw Image Format
+      AVI  MPEG      r--   Microsoft Audio/Visual Interleaved
+      AVS* AVS       rw+   AVS X image
+      BGR* BGR       rw+   Raw blue, green, and red samples
+     BGRA* BGR       rw+   Raw blue, green, red, and alpha samples
+      BMP* BMP       rw-   Microsoft Windows bitmap image
+     BMP2* BMP       -w-   Microsoft Windows bitmap image (V2)
+     BMP3* BMP       -w-   Microsoft Windows bitmap image (V3)
+      BRF* BRAILLE   -w-   BRF ASCII Braille format
+      CAL* CALS      rw-   Continuous Acquisition and Life-cycle Support Type 1
+           Specified in MIL-R-28002 and MIL-PRF-28002
+     CALS* CALS      rw-   Continuous Acquisition and Life-cycle Support Type 1
+           Specified in MIL-R-28002 and MIL-PRF-28002
+   CANVAS* XC        r--   Constant image uniform color
+  CAPTION* CAPTION   r--   Caption
+      CIN* CIN       rw-   Cineon Image File
+      CIP* CIP       -w-   Cisco IP phone image format
+     CLIP* CLIP      rw+   Image Clip Mask
+     CMYK* CMYK      rw+   Raw cyan, magenta, yellow, and black samples
+    CMYKA* CMYK      rw+   Raw cyan, magenta, yellow, black, and alpha samples
+      CR2  DNG       r--   Canon Digital Camera Raw Image Format
+      CRW  DNG       r--   Canon Digital Camera Raw Image Format
+      CUR* CUR       rw-   Microsoft icon
+      CUT* CUT       r--   DR Halo
+      DCM* DCM       r--   Digital Imaging and Communications in Medicine image
+           DICOM is used by the medical community for images like X-rays.  The
+           specification, "Digital Imaging and Communications in Medicine
+           (DICOM)", is available at http://medical.nema.org/.  In particular,
+           see part 5 which describes the image encoding (RLE, JPEG, JPEG-LS),
+           and supplement 61 which adds JPEG-2000 encoding.
+      DCR  DNG       r--   Kodak Digital Camera Raw Image File
+      DCX* PCX       rw+   ZSoft IBM PC multi-page Paintbrush
+      DDS* DDS       rw+   Microsoft DirectDraw Surface
+    DFONT* TTF       r--   Multi-face font package (Freetype 2.5.5)
+      DNG  DNG       r--   Digital Negative
+      DOT  DOT       ---   Graphviz
+      DPX* DPX       rw-   SMPTE 268M-2003 (DPX 2.0)
+           Digital Moving Picture Exchange Bitmap, Version 2.0.
+           See SMPTE 268M-2003 specification at http://www.smtpe.org
+           
+     DXT1* DDS       rw+   Microsoft DirectDraw Surface
+     DXT5* DDS       rw+   Microsoft DirectDraw Surface
+     EPDF  PDF       rw-   Encapsulated Portable Document Format
+      EPI  PS        rw-   Encapsulated PostScript Interchange format
+      EPS  PS        rw-   Encapsulated PostScript
+     EPS2* PS2       -w-   Level II Encapsulated PostScript
+     EPS3* PS3       -w+   Level III Encapsulated PostScript
+     EPSF  PS        rw-   Encapsulated PostScript
+     EPSI  PS        rw-   Encapsulated PostScript Interchange format
+      EPT  EPT       rw-   Encapsulated PostScript with TIFF preview
+     EPT2  EPT       rw-   Encapsulated PostScript Level II with TIFF preview
+     EPT3  EPT       rw+   Encapsulated PostScript Level III with TIFF preview
+      ERF  DNG       r--   Epson Raw Format
+      FAX* FAX       rw+   Group 3 FAX
+           FAX machines use non-square pixels which are 1.5 times wider than
+           they are tall but computer displays use square pixels, therefore
+           FAX images may appear to be narrow unless they are explicitly
+           resized using a geometry of "150x100%".
+           
+     FITS* FITS      rw-   Flexible Image Transport System
+  FRACTAL* PLASMA    r--   Plasma fractal image
+      FTS* FTS       rw-   Flexible Image Transport System
+       G3* FAX       rw-   Group 3 FAX
+      GIF* GIF       rw+   CompuServe graphics interchange format
+    GIF87* GIF       rw-   CompuServe graphics interchange format (version 87a)
+ GRADIENT* GRADIENT  r--   Gradual linear passing from one shade to another
+     GRAY* GRAY      rw+   Raw gray samples
+   GROUP4* TIFF      rw-   Raw CCITT Group4
+       GV  DOT       ---   Graphviz
+     HALD*           r--   Identity Hald color lookup table image
+      HDR* HDR       rw+   Radiance RGBE image format
+HISTOGRAM* HISTOGRAM -w-   Histogram of the image
+      HRZ* HRZ       rw-   Slow Scan TeleVision
+      HTM* HTML      -w-   Hypertext Markup Language and a client-side image map
+     HTML* HTML      -w-   Hypertext Markup Language and a client-side image map
+      ICB* TGA       rw-   Truevision Targa image
+      ICO* ICON      rw+   Microsoft icon
+     ICON* ICON      rw-   Microsoft icon
+      IIQ  DNG       r--   Phase One Raw Image Format
+     INFO  INFO      -w+   The image format and characteristics
+   INLINE* INLINE    r--   Base64-encoded inline images
+      IPL* IPL       rw+   IPL Image Sequence
+   ISOBRL* BRAILLE   -w-   ISO/TR 11548-1 format
+      JNG* PNG       rw-   JPEG Network Graphics
+           See http://www.libpng.org/pub/mng/ for details about the JNG
+           format.
+      JNX* JNX       r--   Garmin tile format
+      JPE* JPEG      rw-   Joint Photographic Experts Group JFIF format (80)
+     JPEG* JPEG      rw-   Joint Photographic Experts Group JFIF format (80)
+      JPG* JPEG      rw-   Joint Photographic Experts Group JFIF format (80)
+     JSON  JSON      -w+   The image format and characteristics
+      K25  DNG       r--   Kodak Digital Camera Raw Image Format
+      KDC  DNG       r--   Kodak Digital Camera Raw Image Format
+    LABEL* LABEL     r--   Image label
+      M2V  MPEG      rw+   MPEG Video Stream
+      M4V  MPEG      rw+   Raw MPEG-4 Video
+      MAC* MAC       r--   MAC Paint
+      MAP* MAP       rw-   Colormap intensities and indices
+     MASK* MASK      rw+   Image Clip Mask
+      MAT  MAT       rw+   MATLAB level 5 image format
+    MATTE* MATTE     -w+   MATTE format
+      MEF  DNG       r--   Mamiya Raw Image File
+     MIFF* MIFF      rw+   Magick Image File Format
+      MNG* PNG       rw+   Multiple-image Network Graphics (libpng 1.6.16)
+           See http://www.libpng.org/pub/mng/ for details about the MNG
+           format.
+     MONO* MONO      rw-   Raw bi-level bitmap
+      MOV  MPEG      rw+   MPEG Video Stream
+      MP4  MPEG      rw+   MPEG-4 Video Stream
+      MPC* MPC       rw+   Magick Persistent Cache image format
+     MPEG  MPEG      rw+   MPEG Video Stream
+      MPG  MPEG      rw+   MPEG Video Stream
+      MRW  DNG       r--   Sony (Minolta) Raw Image File
+      MSL* MSL       rw+   Magick Scripting Language
+     MSVG  SVG       rw+   ImageMagick's own SVG internal renderer
+      MTV* MTV       rw+   MTV Raytracing image format
+      MVG* MVG       rw-   Magick Vector Graphics
+      NEF  DNG       r--   Nikon Digital SLR Camera Raw Image File
+      NRW  DNG       r--   Nikon Digital SLR Camera Raw Image File
+     NULL* NULL      rw-   Constant image of uniform color
+      ORF  DNG       r--   Olympus Digital Camera Raw Image File
+      OTB* OTB       rw-   On-the-air bitmap
+      OTF* TTF       r--   Open Type font (Freetype 2.5.5)
+      PAL* UYVY      rw-   16bit/pixel interleaved YUV
+     PALM* PALM      rw+   Palm pixmap
+      PAM* PNM       rw+   Common 2-dimensional bitmap format
+    PANGO* PANGO     ---   Pango Markup Language
+  PATTERN* PATTERN   r--   Predefined pattern
+      PBM* PNM       rw+   Portable bitmap format (black and white)
+      PCD* PCD       rw-   Photo CD
+     PCDS* PCD       rw-   Photo CD
+      PCL  PCL       rw+   Printer Control Language
+      PCT* PICT      rw-   Apple Macintosh QuickDraw/PICT
+      PCX* PCX       rw-   ZSoft IBM PC Paintbrush
+      PDB* PDB       rw+   Palm Database ImageViewer Format
+      PDF  PDF       rw+   Portable Document Format
+     PDFA  PDF       rw+   Portable Document Archive Format
+      PEF  DNG       r--   Pentax Electronic File
+      PES* PES       r--   Embrid Embroidery Format
+      PFA* TTF       r--   Postscript Type 1 font (ASCII) (Freetype 2.5.5)
+      PFB* TTF       r--   Postscript Type 1 font (binary) (Freetype 2.5.5)
+      PFM* PFM       rw+   Portable float format
+      PGM* PNM       rw+   Portable graymap format (gray scale)
+    PICON* XPM       rw-   Personal Icon
+     PICT* PICT      rw-   Apple Macintosh QuickDraw/PICT
+      PIX* PIX       r--   Alias/Wavefront RLE image format
+    PJPEG* JPEG      rw-   Joint Photographic Experts Group JFIF format (80)
+   PLASMA* PLASMA    r--   Plasma fractal image
+      PNG* PNG       rw-   Portable Network Graphics (libpng 1.6.16)
+           See http://www.libpng.org/ for details about the PNG format.
+    PNG00* PNG       rw-   PNG inheriting bit-depth and color-type from original
+    PNG24* PNG       rw-   opaque or binary transparent 24-bit RGB (zlib 1.2.5)
+    PNG32* PNG       rw-   opaque or transparent 32-bit RGBA
+    PNG48* PNG       rw-   opaque or binary transparent 48-bit RGB
+    PNG64* PNG       rw-   opaque or transparent 64-bit RGBA
+     PNG8* PNG       rw-   8-bit indexed with optional binary transparency
+      PNM* PNM       rw+   Portable anymap
+      PPM* PNM       rw+   Portable pixmap format (color)
+  PREVIEW* PREVIEW   -w-   Show a preview an image enhancement, effect, or f/x
+       PS  PS        rw+   PostScript
+      PS2* PS2       -w+   Level II PostScript
+      PS3* PS3       -w+   Level III PostScript
+      PSB* PSD       rw+   Adobe Large Document Format
+      PSD* PSD       rw+   Adobe Photoshop bitmap
+     PTIF* TIFF      rw+   Pyramid encoded TIFF
+      PWP* PWP       r--   Seattle Film Works
+RADIAL-GRADIENT* GRADIENT  r--   Gradual radial passing from one shade to another
+      RAF  DNG       r--   Fuji CCD-RAW Graphic File
+      RAS* SUN       rw+   SUN Rasterfile
+      RAW  DNG       r--   Raw
+      RGB* RGB       rw+   Raw red, green, and blue samples
+     RGBA* RGB       rw+   Raw red, green, blue, and alpha samples
+     RGBO* RGB       rw+   Raw red, green, blue, and opacity samples
+      RGF* RGF       rw-   LEGO Mindstorms EV3 Robot Graphic Format (black and white)
+      RLA* RLA       r--   Alias/Wavefront image
+      RLE* RLE       r--   Utah Run length encoded image
+      RMF  DNG       r--   Raw Media Format
+      RW2  DNG       r--   Panasonic Lumix Raw Image
+      SCR* SCR       r--   ZX-Spectrum SCREEN$
+      SCT* SCT       r--   Scitex HandShake
+      SFW* SFW       r--   Seattle Film Works
+      SGI* SGI       rw+   Irix RGB image
+    SHTML* HTML      -w-   Hypertext Markup Language and a client-side image map
+      SIX* SIX       rw-   DEC SIXEL Graphics Format
+    SIXEL* SIXEL     rw-   DEC SIXEL Graphics Format
+SPARSE-COLOR* TXT       -w+   Sparse Color
+      SR2  DNG       r--   Sony Raw Format 2
+      SRF  DNG       r--   Sony Raw Format
+  STEGANO* STEGANO   r--   Steganographic image
+      SUN* SUN       rw+   SUN Rasterfile
+      SVG  SVG       rw+   Scalable Vector Graphics (RSVG 2.36.3)
+     SVGZ  SVG       rw+   Compressed Scalable Vector Graphics (RSVG 2.36.3)
+     TEXT* TXT       rw+   Text
+      TGA* TGA       rw-   Truevision Targa image
+THUMBNAIL* THUMBNAIL -w+   EXIF Profile Thumbnail
+     TIFF* TIFF      rw+   Tagged Image File Format (LIBTIFF, Version 4.0.3)
+   TIFF64* TIFF      rw-   Tagged Image File Format (64-bit) (LIBTIFF, Version 4.0.3)
+     TILE* TILE      r--   Tile image with a texture
+      TIM* TIM       r--   PSX TIM
+      TTC* TTF       r--   TrueType font collection (Freetype 2.5.5)
+      TTF* TTF       r--   TrueType font (Freetype 2.5.5)
+      TXT* TXT       rw+   Text
+     UBRL* BRAILLE   -w-   Unicode Text format
+      UIL* UIL       -w-   X-Motif UIL table
+     UYVY* UYVY      rw-   16bit/pixel interleaved YUV
+      VDA* TGA       rw-   Truevision Targa image
+    VICAR* VICAR     rw-   VICAR rasterfile format
+      VID* VID       rw+   Visual Image Directory
+     VIFF* VIFF      rw+   Khoros Visualization image
+     VIPS* VIPS      rw+   VIPS image
+      VST* TGA       rw-   Truevision Targa image
+     WBMP* WBMP      rw-   Wireless Bitmap (level 0) image
+      WMV  MPEG      rw+   Windows Media Video
+      WPG* WPG       r--   Word Perfect Graphics
+      X3F  DNG       r--   Sigma Camera RAW Picture File
+      XBM* XBM       rw-   X Windows system bitmap (black and white)
+       XC* XC        r--   Constant image uniform color
+      XCF* XCF       r--   GIMP image
+      XPM* XPM       rw-   X Windows system pixmap (color)
+      XPS  XPS       r--   Microsoft XML Paper Specification
+       XV* VIFF      rw+   Khoros Visualization image
+    YCbCr* YCbCr     rw+   Raw Y, Cb, and Cr samples
+   YCbCrA* YCbCr     rw+   Raw Y, Cb, Cr, and alpha samples
+      YUV* YUV       rw-   CCIR 601 4:1:1 or 4:2:2
+
+* native blob support
+r read support
+w write support
++ support for multiple images
