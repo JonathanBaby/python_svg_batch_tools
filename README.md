@@ -1,6 +1,6 @@
 Command line Python scripts to style, raster and compose (overlay) SVG image files.
 
-## Change color of SVG files
+## Change SVG files color
 ```bash
 python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```
@@ -28,7 +28,7 @@ python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
  ```
 
 
-## Raster SVG files to PNG (and handle Android densities)
+## Raster SVG files to PNG
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92
 ```
@@ -41,7 +41,7 @@ python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --d
 `--renderer RENDERER_NAME` forces the use of a specific renderer.
 
 
-## Batch compose (overlay) a list of images over an other
+## Compose (overlay) images over another
 ```bash
 python compose_bitmap.py --background BACKGROUND_BITMAP -i OVERLAYS_FILES_DIR -o OUTPUT_DIR
 ```
