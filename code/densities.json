@@ -1,32 +1,36 @@
-[
-  {
-    "name": "xxxhdpi",
-    "scale": 640,
-    "sub_dir": "poiasset",
-    "file_name_pattern": "{FILENAME}-{DENSITY}"
-  },
-  {
-    "name": "xxhdpi",
-    "scale": 480,
-    "sub_dir": "poiasset",
-    "file_name_pattern": "{FILENAME}-{DENSITY}"
-  },
-  {
-    "name": "xhdpi",
-    "scale": 320,
-    "sub_dir": "poiasset",
-    "file_name_pattern": "{FILENAME}-{DENSITY}"
-  },
-  {
-    "name": "hdpi",
-    "scale": 240,
-    "sub_dir": "poiasset",
-    "file_name_pattern": "{FILENAME}-{DENSITY}"
-  },
-  {
-    "name": "mdpi",
-    "scale": 160,
-    "sub_dir": "poiasset",
-    "file_name_pattern": "{FILENAME}-{DENSITY}"
-  }
-]
+{
+  "_comment": "List of density output configurations. Template keys: {FILENAME} will be replaced with the input file basename (extension is removed) ; {DENSITY} will be replaced with the density name",
+  "densities":
+  [
+    {
+      "name": "xxxhdpi",
+      "scale": 640,
+      "sub_dir": "poiasset",
+      "file_name_pattern": "{FILENAME}-{DENSITY}"
+    },
+    {
+      "name": "xxhdpi",
+      "scale": 480,
+      "sub_dir": "poiasset",
+      "file_name_pattern": "{FILENAME}-{DENSITY}"
+    },
+    {
+      "name": "xhdpi",
+      "scale": 320,
+      "sub_dir": "poiasset",
+      "file_name_pattern": "{FILENAME}-{DENSITY}"
+    },
+    {
+      "name": "hdpi",
+      "scale": 240,
+      "sub_dir": "poiasset",
+      "file_name_pattern": "{FILENAME}-{DENSITY}"
+    },
+    {
+      "name": "mdpi",
+      "scale": 160,
+      "sub_dir": "poiasset",
+      "file_name_pattern": "{FILENAME}-{DENSITY}"
+    }
+  ]
+}

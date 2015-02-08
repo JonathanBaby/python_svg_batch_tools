@@ -49,7 +49,8 @@ class DensitySize:
 class DensityConverter:
     densities = []
     with open(DENSITIES_CONFIG_FILE) as densities_config_file:
-        densities_json = json.load(densities_config_file)
+        root_json = json.load(densities_config_file)
+        densities_json = root_json.get('densities')
         for density in densities_json:
             densities.append(DensityOutputConfig(density.get('name'), density.get('scale'), density.get('sub_dir'),
                                                  density.get('file_name_pattern')))
@@ -72,21 +73,20 @@ class DensityConverter:
         raise Exception('No density found named "' + density_name + '"')
 
     @staticmethod
-    def get_density_sizes(width, height, density_label):
+    def get_density_sizes(width, height, density_name):
         """
         Returns a list of DensitySize objects with converted width and height for each density.
         :param width: int
         :param height: int
-        :param density_label: str
+        :param density_name: str
         :return: DensitySize
         """
-        input_density = DensityConverter.get_density(density_label)
+        input_density = DensityConverter.get_density(density_name)
         density_sizes = []
         for output_density in DensityConverter.densities:
             converted_width = DensityConverter.convert(width, input_density.scale, output_density.scale)
             converted_height = DensityConverter.convert(height, input_density.scale, output_density.scale)
             density_size = DensitySize(output_density, converted_width, converted_height)
-            print density_size
             density_sizes.append(density_size)
         return density_sizes
 

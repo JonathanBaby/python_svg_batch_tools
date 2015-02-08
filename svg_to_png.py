@@ -237,6 +237,8 @@ def main(argv=None):
     if args.DENSITY_LABEL is not None:
         density_sizes = DensityConverter.get_density_sizes(args.WIDTH, args.HEIGHT, args.DENSITY_LABEL)
         for density_size in density_sizes:
+            print(density_size)
+        for density_size in density_sizes:
             print('\nHandling density "' + density_size.output_config.name + '"\n')
             output_dir = density_size.output_config.get_output_dir(args.OUTPUT_DIR)
             if not os.path.isdir(output_dir):
