@@ -1,10 +1,10 @@
-Command line Python scripts to style, raster and compose (overlay) SVG image files.
+Command line scripts to style, raster and compose (overlay) Scalable Vector Graphics. Batch processing.
 
 ## Change SVG files color
 ```bash
 python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```
-`--color` can use different formats:
+`--color` accepts different formats:
 * hexadecimal strings like "#FF0000" or "#F00",
 * "rgb" strings like "rgb(255, 0, 0)",
 * [color names](code/color_names.cfg) like "red".
@@ -32,7 +32,7 @@ python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92
 ```
-The script looks for the available renderers, deals with densities computing and performs command line calls.
+The script looks for the available renderers, deals with densities and performs command line calls.
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --density xhdpi
 ```
@@ -47,4 +47,4 @@ python compose_bitmap.py --background BACKGROUND_BITMAP -i OVERLAYS_DIR -o OUTPU
 ```
 Typical usage is to compose multiple icons over a same background. For now, it works only with bitmaps. A nice improvement would be to handle SVG composition.
 
- Further: [notes about interesting around SVG tools](doc/notes_about_svg.md).
+ Further: [notes about interesting SVG tools](doc/notes_about_svg.md).
