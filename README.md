@@ -4,14 +4,14 @@ Command line Python scripts to style, raster and compose (overlay) SVG image fil
 ```bash
 python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```
-`--color` can use any CSS-like format:
+`--color` can use different formats:
 * hexadecimal (6 or 3 digits) like "#FF0000" or "#F00",
-* [CSS color names](code/color_names.cfg) like "red",
+* text [color names](code/color_names.cfg) like "red",
 * RGB strings like "rgb(255, 0, 0)".
 
 `--match` specifies a color to replace.
 
-`--rules` applies a list of style "match/set" rules, allowing to control not only fill colors but any SVG style attribute (stroke, stroke-width, opacity, etc.). Rules are provided with a JSON file like this:
+`--rules` applies a list of style "match/set" rules to control not only fill colors but any SVG style attribute (stroke, stroke-width, opacity, etc.). Rules are described in a JSON file:
  ```javascript
 [
     {
@@ -32,20 +32,19 @@ python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92
 ```
-The script will look for available renderers (ImageMagick/Inkscape). It does command line calls and deals with densities computing - espcially for ImageMagick. ImageMagick is faster, but Inkscape has a better support of SVG standard.
+The script looks for available renderers (ImageMagick/Inkscape). It does command line calls and deals with densities computing.
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --density xhdpi
 ```
-`--density`, if provided, will use a [density configurations list](code/densities.json) to raster each file to all of these densities. This option was intended to output Android assets multiple resolutions.
+`--density` specifies the density associated with the given size and rasters each file to a [list of densities](code/densities.json). This option was intended to output Android assets multiple resolutions.
 
-`--renderer RENDERER_NAME` forces the use of a specific renderer.
+`--renderer` forces the use of a specific renderer. ImageMagick is faster, but Inkscape has a better support of SVG standard.
 
 
 ## Compose (overlay) images over another
 ```bash
-python compose_bitmap.py --background BACKGROUND_BITMAP -i OVERLAYS_FILES_DIR -o OUTPUT_DIR
+python compose_bitmap.py --background BACKGROUND_BITMAP -i OVERLAYS_DIR -o OUTPUT_DIR
 ```
-Typical usage is to compose multiple icons over a same background.
-For now, it works only with bitmaps over bitmap. Nice goal would be to handle SVG composition, with flattened transformations and single unit space.
+Typical usage is to compose multiple icons over a same background. For now, it works only with bitmaps. Handling SVG composition would be a nice improvement.
 
- Some [notes](notes_about_svg.md) about what I found be interesting around SVG tools.
+ Further: [notes about interesting around SVG tools](notes_about_svg.md).
