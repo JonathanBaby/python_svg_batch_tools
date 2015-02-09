@@ -5,13 +5,13 @@ Command line Python scripts to style, raster and compose (overlay) SVG image fil
 python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```
 `--color` can use different formats:
-* hexadecimal (6 or 3 digits) like "#FF0000" or "#F00",
-* text [color names](code/color_names.cfg) like "red",
-* RGB strings like "rgb(255, 0, 0)".
+* hexadecimal like "#FF0000" or "#F00",
+* [color names](code/color_names.cfg) like "red",
+* CSS strings like "rgb(255, 0, 0)".
 
 `--match` specifies a color to replace.
 
-`--rules` applies a list of style "match/set" rules to control not only fill colors but any SVG style attribute (stroke, stroke-width, opacity, etc.). Rules are described in a JSON file:
+`--rules` applies a list of "match/set" rules to update any SVG style attribute (stroke, stroke-width, opacity, etc.). Rules are described in a JSON file:
  ```javascript
 [
     {
@@ -32,7 +32,7 @@ python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92
 ```
-The script looks for available renderers (ImageMagick/Inkscape). It does command line calls and deals with densities computing.
+The script looks for the available renderers, deals with densities computing and performs command line calls.
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --density xhdpi
 ```
