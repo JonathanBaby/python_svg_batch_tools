@@ -1,4 +1,5 @@
-Command line scripts to style, raster and compose (overlay) Scalable Vector Graphics. Batch processing.
+Command line scripts to style, raster and compose (overlay) Scalable Vector Graphics.
+
 
 ## Change SVG files color
 ```bash
@@ -11,7 +12,7 @@ python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 
 `--match` specifies a color to replace.
 
-`--rules` applies a list of "match/set" rules to update any SVG style attribute (stroke, stroke-width, opacity, etc.). Rules are described with a JSON file:
+`--rules` applies a list of "match/set" rules to update any SVG style attribute (stroke-width, opacity...). Rules are described with a JSON file:
  ```javascript
 [
     {
@@ -36,7 +37,7 @@ The script looks for the available renderers, deals with densities and performs 
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --density xhdpi
 ```
-`--density` specifies the density associated with the given size and rasters each file to a [list of densities](code/densities.json). It was intended to output Android assets multiple resolutions.
+`--density` specifies reference density and rasters files to [all listed densities](code/densities.json). It was intended to output Android assets multiple resolutions.
 
 `--renderer` forces the use of a specific renderer. ImageMagick is faster, but Inkscape has a better support of SVG standard.
 
@@ -45,6 +46,6 @@ python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --d
 ```bash
 python compose_bitmap.py --background BACKGROUND_BITMAP -i OVERLAYS_DIR -o OUTPUT_DIR
 ```
-Typical usage is to compose multiple icons over a same background. For now, it works only with bitmaps. A nice improvement would be to handle SVG composition.
+Typical use is to compose multiple icons over a same background. For now, it works only with bitmaps. A nice improvement would be to handle SVG composition.
 
- Further: [notes about interesting SVG tools](doc/notes_about_svg.md).
+ Further: [Interesting SVG tools](doc/notes_about_svg.md).
