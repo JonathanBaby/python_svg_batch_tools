@@ -5,10 +5,7 @@ Command line scripts to style, raster and compose (overlay) Scalable Vector Grap
 ```bash
 python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```
-`--color` accepts different formats:
-* hexadecimal strings like "#FF0000" or "#F00",
-* "rgb" strings like "rgb(255, 0, 0)",
-* [color names](code/color_names.cfg) like "red".
+`--color` accepts four formats: "red" (from [color names list](code/color_names.cfg), "#FF0000", "#F00" and "rgb(255, 0, 0)".
 
 `--match` specifies a color to replace.
 
