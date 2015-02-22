@@ -180,6 +180,7 @@ class SvgToPngInkscapeRenderer(SvgToPngRenderer):
 
 def get_renderer(renderer_name=None):
     selected_renderer = None
+    #TODO: move renderers to a map
     if renderer_name:
         if renderer_name == 'inkscape':
             selected_renderer = SvgToPngInkscapeRenderer()
@@ -188,7 +189,7 @@ def get_renderer(renderer_name=None):
         else:
             raise Exception('Unknown renderer ' + renderer_name)
     else:
-        for renderer in [SvgToPngImageMagickRenderer(), SvgToPngInkscapeRenderer()]:
+        for renderer in [SvgToPngInkscapeRenderer(), SvgToPngImageMagickRenderer()]:
             if renderer.is_available():
                 selected_renderer = renderer
                 break
@@ -199,17 +200,21 @@ def get_renderer(renderer_name=None):
 
 def parse_command_line(argv):
     parser = argparse.ArgumentParser(
-        description='Render SVG files to PNG with specified size, using pixels or Android DIP.')
-    parser.add_argument('-i', dest='INPUT_FILE_OR_DIR', default='', help='Input SVG files or directory')
-    parser.add_argument('-o', dest='OUTPUT_DIR', default='', help='Ouput directory for PNG files')
-    parser.add_argument('--width', dest='WIDTH', type=int, help='Output width, in pixels')
-    parser.add_argument('--height', dest='HEIGHT', type=int, help='Output height, in pixels')
+        description='Renders SVG files to PNG with specified size, using pixels or Android DIP.')
+    parser.add_argument('-i', dest='INPUT_FILE_OR_DIR', default='',
+        help='Input SVG files or directory')
+    parser.add_argument('-o', dest='OUTPUT_DIR', default='',
+        help='Ouput directory for PNG files')
+    parser.add_argument('--width', dest='WIDTH', type=int,
+        help='Output width, in pixels')
+    parser.add_argument('--height', dest='HEIGHT', type=int,
+        help='Output height, in pixels')
     parser.add_argument('--renderer', dest='RENDERER', choices=['inkscape', 'imagemagick'],
-                        help='Force renderer to use')
-    parser.add_argument('--density', dest='DENSITY_LABEL',
-                        choices=DensityConverter.get_density_names(),
-                        help='Specifies density corresponding to the given size, and generates ALL the other densities\
-                        directly from the SVG source (intented to check potential quality increase).')
+        help='Force renderer to use')
+    parser.add_argument('--density', dest='DENSITY_LABEL', choices=DensityConverter.get_density_names(),
+        help='Specifies density to consider as reference and exports PNG to ALL densities specified in config file.')
+    parser.add_argument('--config', dest='DENSITIES_CONFIG_FILE', default='densities.json',
+        help='Config file describing densities output scales and output paths.')
     return parser.parse_args(argv)
 
 
@@ -221,6 +226,8 @@ def check_command_line_arguments(args):
     args.OUTPUT_DIR = os.path.normpath(args.OUTPUT_DIR)
     if not os.path.exists(args.OUTPUT_DIR):
         os.makedirs(args.OUTPUT_DIR)
+    if not os.path.isfile(args.DENSITIES_CONFIG_FILE):
+            raise Exception('Invalid config file "' + args.DENSITIES_CONFIG_FILE + '"')
 
 
 def main(argv=None):
@@ -233,9 +240,11 @@ def main(argv=None):
     renderer = get_renderer(args.RENDERER)
     print('\nSelected ' + str(renderer))
 
+    density_converter = DensityConverter(args.DENSITIES_CONFIG_FILE)
+
     input_svg_files = sorted(utils.get_file_paths(args.INPUT_FILE_OR_DIR, utils.is_svg_file), key=str.lower)
     if args.DENSITY_LABEL is not None:
-        density_sizes = DensityConverter.get_density_sizes(args.WIDTH, args.HEIGHT, args.DENSITY_LABEL)
+        density_sizes = density_converter.get_density_sizes(args.WIDTH, args.HEIGHT, args.DENSITY_LABEL)
         for density_size in density_sizes:
             print(density_size)
         for density_size in density_sizes:
@@ -244,13 +253,12 @@ def main(argv=None):
             if not os.path.isdir(output_dir):
                 os.mkdir(output_dir)
             for svg_file in input_svg_files:
-                png_filename = density_size.output_config.get_filename(
-                    os.path.splitext(os.path.basename(svg_file))[0] + '.png')
+                png_filename = density_size.output_config.get_filename(os.path.splitext(svg_file)[0] + '.png')
                 png_file = os.path.join(output_dir, png_filename)
                 renderer.render(svg_file, png_file, density_size.width, density_size.height)
     else:
         for svg_file in input_svg_files:
-            png_file = os.path.join(args.OUTPUT_DIR, os.path.splitext(os.path.basename(svg_file))[0] + '.png')
+            png_file = os.path.join(args.OUTPUT_DIR, os.path.splitext(svg_file)[0] + '.png')
             renderer.render(svg_file, png_file, args.WIDTH, args.HEIGHT)
 
     utils.print_reporting(date_time_start, datetime.datetime.now(), input_svg_files)

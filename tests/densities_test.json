@@ -1,0 +1,25 @@
+{
+  "densities":
+  [
+    {
+      "name": "toto",
+      "scale": 1
+    },
+    {
+      "name": "titi",
+      "scale": 2,
+      "sub_dir": "titi_dir"
+    },
+    {
+      "name": "tata",
+      "scale": 3,
+      "file_name_pattern": "{FILENAME}-{DENSITY}"
+    },
+    {
+      "name": "tutu",
+      "scale": 4,
+      "sub_dir": "tutu_dir",
+      "file_name_pattern": "{FILENAME}-{DENSITY}"
+    }
+  ]
+}
