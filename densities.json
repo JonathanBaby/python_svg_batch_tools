@@ -1,7 +1,6 @@
 {
   "_comment": "List of density output configurations. Template keys: {FILENAME} will be replaced with the input file basename (extension is removed) ; {DENSITY} will be replaced with the density name",
-  "densities":
-  [
+  "densities": [
     {
       "name": "xxxhdpi",
       "scale": 640,
