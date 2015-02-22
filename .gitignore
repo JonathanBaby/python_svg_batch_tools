@@ -56,6 +56,7 @@ target/
 # -----------------------------------------------------------------------------
 # John's personal mess
 other/
+tests/pictos_mappy_svg
 
 # KDE Dolphin directory display preferences
 .directory
