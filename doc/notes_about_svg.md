@@ -18,6 +18,8 @@ Softwares for graphists (with UI)
 * Interview:  http://libregraphicsworld.org/blog/entry/introducing-svg-cleaner
 * C++ reboot: http://libregraphicsworld.org/blog/entry/svg-cleaner-0.5-leaner-faster-runs-on-mac
 
+[SVGOMG](https://jakearchibald.github.io/svgomg/) for "SVG Optimizer Missing GUI", an equivalent to SVG Cleaner but on-line, using Node-JS.
+
 [Illustrator export options](http://creativedroplets.com/export-svg-for-the-web-with-illustrator-cc/): uncheck "Preserve Illustrator Editing Capabilities".
 
 [Kylobyte SVG Challenge](http://johan.github.io/kilobyte-svg-challenge/): an open-source project to create SVG logo and promote SVG tools.
@@ -42,6 +44,10 @@ Flatten SVG transformations:
 * https://github.com/petercollingridge/SVG-Optimiser
 * http://petercollingridge.appspot.com/svg-transforms
 * online version: http://petercollingridge.appspot.com/svg-optimiser
+
+About XPath in SVG with Python ElementTree module and regular expressions
+https://github.com/berteh/svg-objects-export/issues/9#issuecomment-74086171
+
 
 About SVG viewport:
 * http://sarasoueidan.com/blog/svg-coordinate-systems/
