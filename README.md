@@ -5,7 +5,7 @@ Command line scripts to style, raster and compose (overlay) Scalable Vector Grap
 ```bash
 python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```
-`--color` accepts four formats: "red" (from [color names list](code/color_names.cfg), "#FF0000", "#F00" and "rgb(255, 0, 0)".
+`--color` accepted formats: "red" ([color names list](code/color_names.cfg)), "#FF0000", "#F00", "rgb(255, 0, 0)".
 
 `--match` specifies a color to replace.
 
@@ -30,7 +30,7 @@ python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92
 ```
-The script looks for the available renderers, deals with densities and performs command line calls.
+This looks for the available renderers, deals with densities and performs command line calls.
 ```bash
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --density xhdpi
 ```
@@ -39,10 +39,10 @@ python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --d
 `--renderer` forces the use of a specific renderer. ImageMagick is faster, but Inkscape has a better support of SVG standard.
 
 
-## Compose (overlay) images over another
+## Compose multiple images over a same background
 ```bash
 python compose_bitmap.py --background BACKGROUND_BITMAP -i OVERLAYS_DIR -o OUTPUT_DIR
 ```
-Typical use is to compose multiple icons over a same background. For now, it works only with bitmaps. A nice improvement would be to handle SVG composition.
+For now, it works only with bitmaps. A nice improvement would be to handle SVG composition.
 
- Further: [Interesting SVG tools](doc/notes_about_svg.md).
+Further: [Interesting SVG tools](doc/notes_about_svg.md).
