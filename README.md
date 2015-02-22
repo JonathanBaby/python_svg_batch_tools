@@ -31,10 +31,7 @@ python svg_style_updater.py -i SVG_DIR -o OUTPUT_DIR --color red
 python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92
 ```
 This looks for the available renderers, deals with densities and performs command line calls.
-```bash
-python svg_to_png.py -i SVG_DIR -o OUTPUT_DIR --width 92 --renderer inkscape --density xhdpi
-```
-`--density` specifies reference density and rasters files to [all listed densities](code/densities.json). It was intended to output Android assets multiple resolutions.
+`--density` specifies reference density and rasters files to [all listed densities](densities.json). It was intended to output Android assets multiple resolutions.
 
 `--renderer` forces the use of a specific renderer. ImageMagick is faster, but Inkscape has a better support of SVG standard.
 
