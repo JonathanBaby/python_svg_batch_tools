@@ -7,8 +7,7 @@ import unittest
 from ConfigParser import SafeConfigParser
 
 
-MODULE_DIRECTORY = os.path.dirname(__file__)
-COLOR_NAMES_CONFIG_FILE = os.path.join(MODULE_DIRECTORY, 'color_names.cfg')
+COLOR_NAMES_CONFIG_FILE = os.path.join(os.path.dirname(__file__), 'color_names.cfg')
 
 
 def parse_color_names_config_file():
@@ -23,10 +22,10 @@ def parse_color_names_config_file():
 COLOR_NAMES_DICT = parse_color_names_config_file()
 # TODO: handle two disctinct files, one for CSS standard color names that could be written directly in SVG
 # and one for user-defined custom color names, that should be replaced with their HEX or rgb values
-# NOTE: svgplease does not yet handle color names nor 3 digit hexadecimal colors
 # TODO; use a SVG file to allow visualising color and names instead of a config file, and parse it with minidom
 # TODO: keep original string for valid colors
 # TODO: consider ImageMAgick color name handling http://www.imagemagick.org/script/color.php
+# TODO: add a method to crop to the 216 "Web Safe Colors"
 """
 TODO: handle alpha ?
 
@@ -71,10 +70,13 @@ Access RGB integer values through members: color.r, color.g, color.b.
             raise Exception('No or empty color string provided.')
         if color_string in COLOR_NAMES_DICT:
             color_string = COLOR_NAMES_DICT[color_string]
-        if ColorString.COLOR_REGEX_HEXADECIMAL_6_DIGITS.match(color_string):
-            self._parse_hexadecimal_six_digits(color_string)
-        elif ColorString.COLOR_REGEX_HEXADECIMAL_3_DIGITS.match(color_string):
-            self._parse_hexadecimal_three_digits(color_string)
+        if color_string.startswith('#'):
+            if ColorString.COLOR_REGEX_HEXADECIMAL_6_DIGITS.match(color_string):
+                self._parse_hexadecimal_six_digits(color_string)
+            elif ColorString.COLOR_REGEX_HEXADECIMAL_3_DIGITS.match(color_string):
+                self._parse_hexadecimal_three_digits(color_string)
+            else:
+                raise ColorStringFormatError(color_string, 'Hexadecimal format requires characters in [0-9] or [a-f].')
         elif ColorString.COLOR_REGEX_RGB_INTEGER_CSS.match(color_string):
             self._parse_rgb_integer_css(color_string)
         else:
@@ -89,9 +91,11 @@ Access RGB integer values through members: color.r, color.g, color.b.
         self.r, self.g, self.b = (int(hex_value[i:i + 1], 16) * 17 for i in range(0, 3))
 
     def _parse_rgb_integer_css(self, color_string):
-        # TODO: check values are in [0,255]
         rgb_values = color_string.lstrip('rgb(').rstrip(')').split(',')
-        self.r, self.g, self.b = (int(value.strip()) for value in rgb_values)
+        r, g, b = (int(value.strip()) for value in rgb_values)
+        if r < 0 or g < 0 or b < 0 or r > 255 or g > 255 or b > 255:
+            raise ColorStringFormatError(color_string, 'RGB values should be in range [0, 255].')
+        self.r, self.g, self.b = r, g, b
 
     def __str__(self):
         return '#{:02X}{:02X}{:02X}'.format(self.r, self.g, self.b)
@@ -100,15 +104,17 @@ Access RGB integer values through members: color.r, color.g, color.b.
 class ColorStringFormatError(Exception):
     """Error class for color string parsing."""
 
-    def __init__(self, color_string):
-        message = 'Invalid color string "' + color_string + '".' \
-                  + 'Expecting CSS-like format.'\
-                  + 'Ex: "#FF00FF", "#f0f", "rgb(255, 255, 255)".'
+    def __init__(self, color_string, error_message=None):
+        message = 'Invalid color string "' + color_string + '". '
+        if error_message:
+            message += error_message
+        else:
+            message += 'Accepted formats: "#FF0000", "#f00", "rgb(255, 0, 0)" and CSS color names like "red".'
         super(ColorStringFormatError, self).__init__(message)
 
 
-class TestColorString(unittest.TestCase):
-    def test_raise_error_on_non_hexadecimal_value(self):
+class ColorStringTestCase(unittest.TestCase):
+    def test_raise_ColorStringFormatError_on_non_hexadecimal_value(self):
         with self.assertRaises(ColorStringFormatError):
             ColorString('#gghhii')
 
@@ -124,13 +130,22 @@ class TestColorString(unittest.TestCase):
         color = ColorString('rgb(255,255,0)')
         self.assertEquals((color.r, color.g, color.b), (255, 255, 0))
 
+    def test_raises_ColorStringFormatError_on_out_of_bounds_RGB_values(self):
+        with self.assertRaises(ColorStringFormatError):
+            ColorString('rgb(0,255,256)')
+        with self.assertRaises(ColorStringFormatError):
+            ColorString('rgb(0,255,-1)')
+
+    def test_parse_color_names(self):
+        color = ColorString('yellow')
+        self.assertEquals((color.r, color.g, color.b), (255, 255, 0))
+
     def test_build_hexadecimal_from_any_format(self):
         self.assertEquals('#0000FF', str(ColorString('#0000ff')))
         self.assertEquals('#0000FF', str(ColorString('#00f')))
         self.assertEquals('#0000FF', str(ColorString('rgb(0,0,255)')))
+        self.assertEquals('#0000FF', str(ColorString('blue')))
 
-    def test_parse_color_names(self):
-        self.assertEquals('#FFFF00', str(ColorString('yellow')))
 
 if __name__ == '__main__':
     unittest.main(exit=False)
