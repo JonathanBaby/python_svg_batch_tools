@@ -24,7 +24,7 @@ COLOR_NAMES_DICT = parse_color_names_config_file()
 # and one for user-defined custom color names, that should be replaced with their HEX or rgb values
 # TODO; use a SVG file to allow visualising color and names instead of a config file, and parse it with minidom
 # TODO: keep original string for valid colors
-# TODO: consider ImageMAgick color name handling http://www.imagemagick.org/script/color.php
+# TODO: consider ImageMagick color name handling http://www.imagemagick.org/script/color.php
 # TODO: add a method to crop to the 216 "Web Safe Colors"
 """
 TODO: handle alpha ?
@@ -114,21 +114,25 @@ class ColorStringFormatError(Exception):
 
 
 class ColorStringTestCase(unittest.TestCase):
-    def test_raise_ColorStringFormatError_on_non_hexadecimal_value(self):
-        with self.assertRaises(ColorStringFormatError):
-            ColorString('#gghhii')
-
-    def test_parse_hexadecimal_six_digits(self):
+    def test_parses_hexadecimal_six_digits(self):
         color = ColorString('#00ff00')
         self.assertEquals((color.r, color.g, color.b), (0, 255, 0))
 
-    def test_parse_hexadecimal_three_digits(self):
+    def test_parses_hexadecimal_three_digits(self):
         color = ColorString('#0ff')
         self.assertEquals((color.r, color.g, color.b), (0, 255, 255))
 
-    def test_parse_rgb_integer_css(self):
+    def test_parses_rgb_integer_css(self):
         color = ColorString('rgb(255,255,0)')
         self.assertEquals((color.r, color.g, color.b), (255, 255, 0))
+
+    def test_parses_color_names(self):
+        color = ColorString('yellow')
+        self.assertEquals((color.r, color.g, color.b), (255, 255, 0))
+
+    def test_raises_ColorStringFormatError_on_non_hexadecimal_value(self):
+        with self.assertRaises(ColorStringFormatError):
+            ColorString('#gghhii')
 
     def test_raises_ColorStringFormatError_on_out_of_bounds_RGB_values(self):
         with self.assertRaises(ColorStringFormatError):
@@ -136,11 +140,7 @@ class ColorStringTestCase(unittest.TestCase):
         with self.assertRaises(ColorStringFormatError):
             ColorString('rgb(0,255,-1)')
 
-    def test_parse_color_names(self):
-        color = ColorString('yellow')
-        self.assertEquals((color.r, color.g, color.b), (255, 255, 0))
-
-    def test_build_hexadecimal_from_any_format(self):
+    def test_builds_hexadecimal_from_any_format(self):
         self.assertEquals('#0000FF', str(ColorString('#0000ff')))
         self.assertEquals('#0000FF', str(ColorString('#00f')))
         self.assertEquals('#0000FF', str(ColorString('rgb(0,0,255)')))
