@@ -34,7 +34,7 @@ This looks for the available renderers, deals with densities and performs comman
 
 `--density` specifies reference density and rasters files to [all listed densities](densities.json). It was intended to output Android assets multiple resolutions.
 
-`--renderer` forces the use of a specific renderer. ImageMagick is faster, but Inkscape has a better support of SVG standard.
+`--renderer` forces the use of a specific renderer. ImageMagick is faster, but Inkscape (default) has a better support of SVG standard.
 
 
 ## Compose multiple images over a same background
