@@ -4,32 +4,32 @@
     {
       "name": "xxxhdpi",
       "scale": 640,
-      "sub_dir": "poiasset",
-      "file_name_pattern": "{FILENAME}-{DENSITY}"
+      "sub_dir": "drawable-{DENSITY}",
+      "file_name_pattern": "{FILENAME}"
     },
     {
       "name": "xxhdpi",
       "scale": 480,
-      "sub_dir": "poiasset",
-      "file_name_pattern": "{FILENAME}-{DENSITY}"
+      "sub_dir": "drawable-{DENSITY}",
+      "file_name_pattern": "{FILENAME}"
     },
     {
       "name": "xhdpi",
       "scale": 320,
-      "sub_dir": "poiasset",
-      "file_name_pattern": "{FILENAME}-{DENSITY}"
+      "sub_dir": "drawable-{DENSITY}",
+      "file_name_pattern": "{FILENAME}"
     },
     {
       "name": "hdpi",
       "scale": 240,
-      "sub_dir": "poiasset",
-      "file_name_pattern": "{FILENAME}-{DENSITY}"
+      "sub_dir": "drawable-{DENSITY}",
+      "file_name_pattern": "{FILENAME}"
     },
     {
       "name": "mdpi",
       "scale": 160,
-      "sub_dir": "poiasset",
-      "file_name_pattern": "{FILENAME}-{DENSITY}"
+      "sub_dir": "drawable-{DENSITY}",
+      "file_name_pattern": "{FILENAME}"
     }
   ]
 }
