@@ -6,6 +6,8 @@ import unittest
 import math
 
 
+DENSITIES_CONFIG_FILE = os.path.join(os.path.dirname(__file__), '../densities.json')
+
 class DensityOutputConfig:
     FILENAME_KEY = '{FILENAME}'
     DENSITY_KEY = '{DENSITY}'
@@ -34,7 +36,8 @@ class DensityOutputConfig:
 
     def get_output_dir(self, base_output_dir):
         if self.output_sub_dir:
-            return os.path.join(base_output_dir, self.output_sub_dir)
+            return os.path.join(base_output_dir, self.output_sub_dir).replace(
+                DensityOutputConfig.DENSITY_KEY, self.name)
         return base_output_dir
 
     def get_filename(self, filename):
@@ -65,6 +68,10 @@ class DensityConverter:
             for density_json in densities_json:
                 self.densities.append(DensityOutputConfig.from_json(density_json))
 
+    @staticmethod
+    def get_instance():
+        return DensityConverter(DENSITIES_CONFIG_FILE)
+
     def get_density_names(self):
         return [density.name for density in self.densities]
 
@@ -88,6 +95,8 @@ class DensityConverter:
         :param density_name: str
         :return: DensitySize
         """
+        if type(width) is not int or type(height) is not int:
+            raise Exception('"width" and "height" should be integers.')
         input_density = self.get_density(density_name)
         density_sizes = []
         for output_density in self.densities:
